@@ -1,0 +1,129 @@
+// Define variables
+$primary-color: #000;
+$background-color: #fff;
+$button-background: #fff;
+$button-color: #000;
+
+// Mixin for media query
+@mixin flexbox($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin media($max-width) {
+  @media (max-width: $max-width) {
+    @content;
+  }
+}
+
+@mixin button-styles {
+  padding: 10px 20px;
+  background-color: $button-background;
+  color: $button-color;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// SCSS styles
+.watch-banner {
+  @include flexbox(row, space-between, center);
+  background-image: url("../../assets/images/watch-landing-page.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+
+  @include media(1024px) {
+    flex-direction: column;
+  }
+
+  @include media(768px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  @include media(480px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    background-color: #000;
+  }
+}
+
+.watch-content {
+  max-width: 50%;
+  padding-left: 96px;
+
+  @include media(1024px) {
+    max-width: 50%;
+    padding-left: 0;
+  }
+
+  @include media(768px) {
+    max-width: 100%;
+    padding-left: 0;
+  }
+}
+
+.watch-content h1 {
+  font-size: 88px;
+  margin-bottom: 20px;
+
+  @include media(1024px) {
+    font-size: 2.5rem;
+  }
+
+  @include media(768px) {
+    font-size: 2rem;
+  }
+
+  @include media(480px) {
+    font-size: 1.5rem;
+  }
+}
+
+.watch-content p {
+  font-size: 24px;
+  margin-bottom: 20px;
+  line-height: 32px;
+  text-align: justify;
+
+  @include media(1024px) {
+    font-size: 1rem;
+  }
+
+  @include media(768px) {
+    font-size: 1rem;
+  }
+
+  @include media(480px) {
+    font-size: 0.9rem;
+  }
+}
+
+.explore-button {
+  @include button-styles;
+
+  @include media(768px) {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  @include media(480px) {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}

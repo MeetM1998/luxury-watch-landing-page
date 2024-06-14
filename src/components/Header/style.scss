@@ -1,0 +1,123 @@
+// Define variables
+$primary-color: #000;
+$background-color: #fff;
+$border-color: #ddd;
+$breakpoint-medium: 1024px;
+$breakpoint-small: 768px;
+$breakpoint-mobile: 480px;
+
+// Mixin for media query
+@mixin flexbox($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+  }
+  
+  @mixin hide() {
+    display: none;
+  }
+  
+  @mixin media($max-width) {
+    @media (max-width: $max-width) {
+      @content;
+    }
+  }
+
+  // SCSS styles
+  .navbar {
+    @include flexbox(row, space-between, center);
+    padding: 10px 20px;
+    background-color: $background-color;
+    border-bottom: 1px solid $border-color;
+  }
+  
+  .right-side-nav {
+    @include flexbox(row, null, center);
+    gap: 20px;
+  
+    .icons {
+      cursor: pointer;
+      display: flex;
+      gap: 15px;
+    }
+  
+    .hamburger {
+      @include hide;
+      @include flexbox(column, null, center);
+      cursor: pointer;
+    }
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  
+    a {
+      text-decoration: none;
+      color: $primary-color;
+      font-size: 1rem;
+    }
+  }
+  
+  @include media($breakpoint-medium) {
+    .nav-links {
+      display: none;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  
+    .icons {
+      display: flex;
+    }
+  
+    .nav-links.open {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background-color: $background-color;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      display: flex;
+    }
+  }
+  
+  @include media($breakpoint-small) {
+    .nav-links,
+    .icons {
+      display: none;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  
+    .nav-links.open {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background-color: $background-color;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      display: flex;
+    }
+  }
+  
+  @include media($breakpoint-mobile) {
+    .nav-links.open {
+      top: 50px;
+    }
+  
+    .hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  

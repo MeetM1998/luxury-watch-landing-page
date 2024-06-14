@@ -1,0 +1,146 @@
+// Variables
+$breakpoint-medium: 768px;
+$breakpoint-small: 480px;
+$primary-color: #fff;
+$secondary-color: #ccc;
+
+// Mixin for media queries
+@mixin media($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// SCSS styles
+.footer {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer-heading {
+  margin-bottom: 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include media($breakpoint-medium) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.footer-branding {
+  text-align: left;
+  flex: 0 0 250px;
+  min-width: 250px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+
+  @include media($breakpoint-medium) {
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 20px;
+    flex: 0;
+  }
+
+  h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 25px;
+  }
+
+  hr {
+    margin: 20px 0;
+    border: 1px solid $primary-color;
+  }
+}
+
+.footer-sections {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include media($breakpoint-medium) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: 20px;
+  text-align: left;
+
+  @include media($breakpoint-medium) {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+
+    @include media($breakpoint-small) {
+      font-size: 16px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 10px;
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-size: 14px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        @include media($breakpoint-small) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  a {
+    color: $primary-color;
+    font-size: 20px;
+    text-decoration: none;
+
+    &:hover {
+      color: $secondary-color;
+    }
+
+    @include media($breakpoint-small) {
+      font-size: 18px;
+    }
+  }
+}

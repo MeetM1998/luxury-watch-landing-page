@@ -1,0 +1,66 @@
+// Define variables
+$primary-color: #444;
+$secondary-color: #ddd;
+$box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+$box-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+// Mixin for media query
+@mixin media($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// SCSS styles
+.container {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media(600px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.three-dot {
+  margin: auto;
+  display: block;
+  cursor: pointer;
+}
+
+.card {
+  background-color: $primary-color;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: $box-shadow;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $box-shadow-hover;
+  }
+
+  h2 {
+    font-size: 2em;
+    margin: 0;
+    color: #fff;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 25px;
+    text-align: justify;
+    color: $secondary-color;
+  }
+
+  @include media(600px) {
+    width: 30%;
+    margin: 10px 5px;
+  }
+}
